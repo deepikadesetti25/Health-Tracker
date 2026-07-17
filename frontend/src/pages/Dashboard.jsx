@@ -423,13 +423,13 @@ function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex font-sans text-slate-800">
+    <div className="min-h-screen bg-[#fff5ed] flex font-sans text-slate-800">
       {/* Sidebar Layout */}
-      <div className="w-64 bg-slate-900 text-white flex flex-col justify-between shadow-2xl transition-all duration-300">
+      <div className="w-64 bg-gradient-to-b from-blue-700 to-indigo-600 text-white flex flex-col justify-between shadow-2xl transition-all duration-300">
         <div>
-          <div className="p-6 border-b border-slate-800 flex items-center gap-3">
+          <div className="p-6 border-b border-blue-500/30 flex items-center gap-3">
             <span className="text-3xl">🏥</span>
-            <span className="text-xl font-bold tracking-wider text-blue-400">AI Tracker</span>
+            <span className="text-xl font-bold tracking-wider text-white">AI Tracker</span>
           </div>
           <ul className="p-4 space-y-2">
             {[
@@ -447,8 +447,8 @@ function Dashboard() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl transition text-left text-sm font-semibold ${
                     activeTab === tab.id
-                      ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
-                      : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                      ? "bg-white text-blue-700 shadow-lg shadow-blue-900/20"
+                      : "text-blue-100 hover:bg-white/10 hover:text-white"
                   }`}
                 >
                   <span className="text-lg">{tab.icon}</span>
@@ -458,10 +458,10 @@ function Dashboard() {
             ))}
           </ul>
         </div>
-        <div className="p-4 border-t border-slate-800">
+        <div className="p-4 border-t border-blue-500/30">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-4 px-4 py-3 rounded-xl transition text-left text-sm font-semibold text-red-400 hover:bg-red-950/30"
+            className="w-full flex items-center gap-4 px-4 py-3 rounded-xl transition text-left text-sm font-semibold text-red-200 hover:bg-white/10 hover:text-red-100"
           >
             <span className="text-lg">🚪</span>
             Logout

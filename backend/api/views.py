@@ -244,6 +244,7 @@ def analyze_food(request):
 You are an expert nutritionist and food analyst.
 Analyze the uploaded food image carefully.
 Identify the food and estimate its nutritional values.
+For each key inside 'disease_advice' (diabetes, hypertension, obesity), write a detailed short paragraph of advice (2-3 sentences) specific to that chronic condition explaining how this food item impacts the patient, macro guidelines, and serving limits.
 Return ONLY valid JSON with this exact structure:
 {
     "food_name": "...",
@@ -261,9 +262,9 @@ Return ONLY valid JSON with this exact structure:
     "risk_level": "🟢",  // Use 🟢, 🟡, or 🔴
     "recommendation": "...",
     "disease_advice": {
-        "diabetes": "...",
-        "hypertension": "...",
-        "obesity": "..."
+        "diabetes": "A detailed short paragraph (2-3 sentences) explaining how this food affects diabetic patients.",
+        "hypertension": "A detailed short paragraph (2-3 sentences) explaining how this food affects hypertensive patients.",
+        "obesity": "A detailed short paragraph (2-3 sentences) explaining how this food affects obese patients."
     },
     "better_healthy_alternative": "...",
     "daily_intake_percentage": "...",
@@ -279,6 +280,7 @@ Only return JSON. Do not use markdown format block.
 You are an expert nutritionist.
 Analyze the food: "{custom_food}".
 Estimate its portion size, calories, and detailed macros and chronic disease advice.
+For each key inside 'disease_advice' (diabetes, hypertension, obesity), write a detailed short paragraph of advice (2-3 sentences) specific to that chronic condition explaining how this food item impacts the patient, macro guidelines, and serving limits.
 Return ONLY valid JSON with this exact structure:
 {{
     "food_name": "{custom_food}",
@@ -296,9 +298,9 @@ Return ONLY valid JSON with this exact structure:
     "risk_level": "🟢",  // Use 🟢, 🟡, or 🔴
     "recommendation": "...",
     "disease_advice": {{
-        "diabetes": "...",
-        "hypertension": "...",
-        "obesity": "..."
+        "diabetes": "A detailed short paragraph (2-3 sentences) explaining how this food affects diabetic patients.",
+        "hypertension": "A detailed short paragraph (2-3 sentences) explaining how this food affects hypertensive patients.",
+        "obesity": "A detailed short paragraph (2-3 sentences) explaining how this food affects obese patients."
     }},
     "better_healthy_alternative": "...",
     "daily_intake_percentage": "...",
@@ -357,9 +359,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "9.0"
             risk_level = "🟢"
             recommendation = "Excellent choice. High fiber, low carb, very nutrient dense."
-            diabetes = "Safe and highly recommended. Will assist in blood glucose regulation."
-            hypertension = "Safe, but watch sodium content in commercial dressings."
-            obesity = "Perfect choice. Promotes satiety with minimal caloric density."
+            diabetes = "Chicken salad is exceptionally safe and highly recommended for diabetic individuals. The high dietary fiber and lean protein slow down sugar absorption in the bloodstream, preventing any spikes. You should use a vinegar-based dressing instead of honey-mustard."
+            hypertension = "This meal is generally safe for blood pressure management. However, be cautious of commercial salad dressings which can be packed with hidden sodium. Preparing fresh dressing with olive oil and lemon juice is best."
+            obesity = "This is a perfect meal choice for weight management. The high fiber content from leafy greens promotes long-lasting satiety while providing very minimal caloric density. It is highly useful for daily caloric deficit goals."
             alt = "No alternatives needed. Salad is a top-tier choice."
             intake_pct = "11%"
             confidence = "95%"
@@ -378,9 +380,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "3.5"
             risk_level = "🔴"
             recommendation = "High in sodium, refined carbohydrates, and saturated fats. Control portion size."
-            diabetes = "Risk: High glycemic index can cause significant blood sugar spikes."
-            hypertension = "Risk: Excessive sodium can raise blood pressure."
-            obesity = "Risk: High calorie density can easily lead to surplus intake."
+            diabetes = "This meal presents a high risk for diabetic patients. The refined white flour crust behaves like simple sugar, leading to rapid blood glucose spikes. If consuming, strictly limit to one slice and pair with a side salad to slow absorption."
+            hypertension = "High sodium in cheese, pizza sauce, and processed meats like pepperoni can cause fluid retention and elevate blood pressure. Hypertensive individuals should look for low-sodium cheese options and vegetable toppings."
+            obesity = "Highly energy-dense food that makes maintaining a calorie deficit difficult. Two slices contain a large portion of your daily fat and carbohydrate budget. It is not recommended for weight loss regimens."
             alt = "Thin-crust whole wheat pizza with light cheese and loaded vegetable toppings."
             intake_pct = "38%"
             confidence = "90%"
@@ -399,9 +401,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "4.0"
             risk_level = "🔴"
             recommendation = "High in calories and fat. Limit frequency of consumption."
-            diabetes = "Caution: Refined flour bun can cause blood sugar spike."
-            hypertension = "Caution: High sodium can affect fluid balance and arterial tension."
-            obesity = "Caution: High caloric load in a single meal."
+            diabetes = "The refined bun and added sugary sauces like ketchup can cause a swift rise in blood glucose levels. To make it safer, consider substituting the bun with a lettuce wrap and choosing a lean turkey or chicken patty."
+            hypertension = "Fast-food burgers contain massive amounts of sodium that can exceed half of your daily recommended intake. This can directly strain your blood vessels and raise blood pressure. Skip the cheese and processed sauces."
+            obesity = "This meal has a high concentration of fats and empty calories from processed buns. It is easy to overconsume calories without getting quality vitamins. Swap standard fries for a side salad if ordering."
             alt = "Turkey or lean chicken breast burger wrapped in lettuce instead of a bun."
             intake_pct = "31%"
             confidence = "92%"
@@ -420,9 +422,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "5.5"
             risk_level = "🟡"
             recommendation = "High in carbohydrates. Portion control is recommended."
-            diabetes = "Caution: White rice is a fast-digesting carb. Limit portion size."
-            hypertension = "Moderate. Watch added salt and spices."
-            obesity = "Moderate. High carbohydrate density might delay weight goals."
+            diabetes = "White basmati rice is a fast-digesting carbohydrate that can quickly elevate blood sugar. Limit your serving size to a small bowl and focus on eating the chicken pieces first to buffer the glycemic response."
+            hypertension = "The traditional preparation of biryani uses heavy spices and substantial amounts of salt, which can elevate blood pressure. Limit your portion and balance with unsalted cucumber raita (yogurt)."
+            obesity = "Biryani is highly caloric due to the oil/ghee used during cooking. A single standard plate can contain over 600 calories, which can hinder weight loss goals. Portion control is mandatory."
             alt = "Cauliflower rice, brown rice, or quinoa biryani with extra vegetables and lean meat."
             intake_pct = "29%"
             confidence = "94%"
@@ -441,9 +443,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "9.5"
             risk_level = "🟢"
             recommendation = "Excellent natural sweet snack, high in soluble fiber (pectin)."
-            diabetes = "Safe. High fiber slows sugar absorption; low glycemic load."
-            hypertension = "Highly recommended. Potassium helps lower blood pressure."
-            obesity = "Excellent snack. Fiber promotes fullness and limits total daily intake."
+            diabetes = "Apples are a highly safe and nutritious snack for diabetics. The natural fructose is balanced by a high amount of soluble fiber (pectin), which ensures slow and steady digestion without glucose spikes."
+            hypertension = "Highly recommended for blood pressure regulation. Apples are naturally sodium-free and contain potassium, which helps relax blood vessel walls and lower arterial pressure."
+            obesity = "An excellent low-calorie snack choice. The high water and fiber content fills you up quickly, preventing overeating later in the day. Ideal replacement for processed sweet snacks."
             alt = "No alternatives needed. Apples are an excellent choice."
             intake_pct = "5%"
             confidence = "98%"
@@ -462,9 +464,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "7.5"
             risk_level = "🟡"
             recommendation = "Good source of lean protein. Keep soy sauce minimal to restrict sodium."
-            diabetes = "Moderate. Watch portion of white rice used in sushi rolls."
-            hypertension = "Caution: Soy sauce and seasoned rice can contain high sodium."
-            obesity = "Safe. Relatively low fat, but caloric density accumulates via multiple rolls."
+            diabetes = "Sushi rice is seasoned with sugar and vinegar, which increases its glycemic index. Opt for sashimi (raw fish without rice) or brown rice rolls, and limit portions to manage blood glucose levels."
+            hypertension = "The fish itself is healthy, but the soy sauce dipping contains extremely high levels of sodium. Avoid drenching the roll in soy sauce and ask for low-sodium soy sauce options."
+            obesity = "Sushi is a clean source of protein, but the calories can add up quickly from mayonnaise-based spicy sauces. Stick to basic rolls like cucumber or tuna rolls and avoid deep-fried tempura options."
             alt = "Brown rice sushi rolls or sashimi options."
             intake_pct = "16%"
             confidence = "90%"
@@ -483,9 +485,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "9.2"
             risk_level = "🟢"
             recommendation = "Highly nutritious. Rich in beta-glucan soluble fiber."
-            diabetes = "Safe. Soluble fiber helps maintain steady blood glucose control."
-            hypertension = "Highly recommended. Low sodium and rich in cardiovascular-friendly fiber."
-            obesity = "Highly recommended. Promotes satiety and controls mid-day cravings."
+            diabetes = "Oatmeal is highly beneficial due to beta-glucan fiber, which improves insulin sensitivity and controls blood sugar. Avoid adding honey, maple syrup, or dried fruits to keep the glycemic load low."
+            hypertension = "Excellent for cardiovascular health. Soluble fiber helps lower cholesterol levels, and oats are naturally very low in sodium, which aids in blood pressure management."
+            obesity = "A top-tier breakfast for weight control. Oats absorb water and expand in the stomach, promoting long-term satiety and helping you stay full until lunchtime."
             alt = "Top with seeds or walnuts instead of honey or syrup."
             intake_pct = "9%"
             confidence = "95%"
@@ -504,9 +506,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "2.5"
             risk_level = "🔴"
             recommendation = "High in sodium and saturated fats from frying. Limit strictly."
-            diabetes = "Risk: Deep-fried high glycemic carbohydrate causes insulin spikes."
-            hypertension = "Risk: Excessive added salt directly raises arterial pressure."
-            obesity = "Risk: High fat absorption translates to high caloric density."
+            diabetes = "Potatoes have a high glycemic index, and deep-frying them adds unhealthy trans fats that impair insulin sensitivity. This combination is highly likely to cause severe blood sugar spikes."
+            hypertension = "Fried potatoes are typically heavily salted, contributing excessive sodium that directly raises blood pressure. Frequent consumption is associated with a higher risk of cardiovascular strain."
+            obesity = "French fries are extremely high in empty calories due to oil absorption. They offer very little nutritional value relative to their high caloric density, making them highly counterproductive for weight loss."
             alt = "Air-fried sweet potato wedges or baked potatoes."
             intake_pct = "18%"
             confidence = "93%"
@@ -525,9 +527,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "9.0"
             risk_level = "🟢"
             recommendation = "Excellent source of high-quality lean protein."
-            diabetes = "Highly recommended. Promotes insulin action with zero carbs."
-            hypertension = "Safe. Keep added salt minimal during preparation."
-            obesity = "Highly recommended. Promotes lean mass synthesis and satiety."
+            diabetes = "An outstanding, safe meal option for diabetes. The zero-carbohydrate, high-protein profile helps build muscle mass and stabilize blood sugar levels when eaten with non-starchy vegetables."
+            hypertension = "Highly suitable for blood pressure control, provided it is prepared with minimal salt. Lean poultry provides high-quality protein without the saturated fats found in red meat."
+            obesity = "Perfect for fat loss. High-protein foods have a high thermic effect, meaning your body burns more calories digesting them, and they promote lean muscle retention during a deficit."
             alt = "Add steamed broccoli or green vegetables."
             intake_pct = "14%"
             confidence = "96%"
@@ -546,9 +548,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "3.0"
             risk_level = "🔴"
             recommendation = "High in added simple sugars and saturated milk fats. Consume rarely."
-            diabetes = "Risk: Elevated simple sugars cause severe blood glucose spike."
-            hypertension = "Moderate, but watch total saturated fat intake."
-            obesity = "Risk: High calorie density with little fiber or protein value."
+            diabetes = "Contains a high concentration of simple sugars and fats that cause a rapid and dangerous surge in blood glucose. Strictly avoid, or choose a sugar-free, low-fat alternative."
+            hypertension = "While sodium is moderate, the high saturated milk fats can contribute to arterial plaque buildup over time. It should be consumed very rarely by individuals with cardiovascular concerns."
+            obesity = "Ice cream is highly caloric and packed with sugar, offering no fiber to promote fullness. It is a major source of empty calories that can stall weight loss progress."
             alt = "Sugar-free frozen yogurt or blended frozen banana smoothie."
             intake_pct = "13%"
             confidence = "91%"
@@ -567,9 +569,9 @@ Only return JSON. Do not use markdown format block.
             health_score = "6.5"
             risk_level = "🟡"
             recommendation = "Moderate health profile. Balance with nutrient-dense sides."
-            diabetes = "Consume in moderation and watch glycemic response."
-            hypertension = "Watch sodium intake and hydrate well."
-            obesity = "Control portion sizes to manage calorie intake."
+            diabetes = "Consult your healthcare provider for specific advice. Aim for meals rich in fiber and lean protein to stabilize blood sugar, and limit refined carbohydrates."
+            hypertension = "Ensure your meals are prepared with low sodium (under 500mg per serving). Focus on potassium-rich foods like vegetables to support healthy blood pressure."
+            obesity = "Maintain a steady daily calorie deficit. Prioritize whole foods over processed items to manage portion sizes and improve overall body composition."
             alt = "Grilled fish, vegetables, or quinoa-based meals."
             intake_pct = "21%"
             confidence = "85%"

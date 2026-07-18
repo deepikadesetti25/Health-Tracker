@@ -818,19 +818,25 @@ function Dashboard() {
                     {foodResult.disease_advice && (
                       <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm space-y-3 mb-6">
                         <h4 className="font-bold text-slate-900 border-b pb-1 text-sm">👨‍⚕️ Disease-Based AI Recommendation</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                          <div className="p-3 bg-red-50 rounded-xl border border-red-100">
-                            <span className="font-bold text-red-800">For Diabetes:</span>
-                            <p className="mt-1 text-red-950 leading-relaxed">{foodResult.disease_advice.diabetes}</p>
-                          </div>
-                          <div className="p-3 bg-amber-50 rounded-xl border border-amber-100">
-                            <span className="font-bold text-amber-800">For Hypertension:</span>
-                            <p className="mt-1 text-amber-950 leading-relaxed">{foodResult.disease_advice.hypertension}</p>
-                          </div>
-                          <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
-                            <span className="font-bold text-blue-800">For Obesity:</span>
-                            <p className="mt-1 text-blue-950 leading-relaxed">{foodResult.disease_advice.obesity}</p>
-                          </div>
+                        <div className="text-sm">
+                          {(!profileDisease || profileDisease.toLowerCase().includes("diabetes")) && (
+                            <div className="p-4 bg-red-50 rounded-xl border border-red-100">
+                              <span className="font-bold text-red-800 text-xs block mb-1">📋 Diabetes Diet Guideline</span>
+                              <p className="text-red-950 leading-relaxed font-medium">{foodResult.disease_advice.diabetes}</p>
+                            </div>
+                          )}
+                          {profileDisease && profileDisease.toLowerCase().includes("hypertension") && (
+                            <div className="p-4 bg-amber-50 rounded-xl border border-amber-100">
+                              <span className="font-bold text-amber-800 text-xs block mb-1">📋 Hypertension Diet Guideline</span>
+                              <p className="text-amber-950 leading-relaxed font-medium">{foodResult.disease_advice.hypertension}</p>
+                            </div>
+                          )}
+                          {profileDisease && profileDisease.toLowerCase().includes("obesity") && (
+                            <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                              <span className="font-bold text-blue-800 text-xs block mb-1">📋 Obesity Diet Guideline</span>
+                              <p className="text-blue-950 leading-relaxed font-medium">{foodResult.disease_advice.obesity}</p>
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}
